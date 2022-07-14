@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <style>
+    body {
+      /* background-color: black; */
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    #head {
+      margin-left: 22rem;
+      margin-top: 10rem;
+      /* display: none; */
+    }
+
+    #Search {
+      background-color: #2d2f30;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 1.2rem;
+      height: 55px;
+      width: 550px;
+      border-radius: 17px;
+      padding: 0px 10px;
+      margin-left: 60px;
+    }
+
+    #logo img {
+      width: 200px;
+      margin-left: 240px;
+      margin-bottom: 30px;
+
+    }
+
+    #search-button {
+      margin-left: -3rem;
+      background-color: #ffeb00;
+      padding: 8px 10px;
+      border-radius: 50%;
+      border: none;
+    }
+
+    #content {
+      color: white;
+      width: 41%;
+      height: 300px;
+      margin-left: 410px;
+      border-radius: 10px;
+      overflow: scroll;
+      overflow-x: hidden;
+      padding-left: 20px;
+      background-color: #2d2f30;
+      display: none;
+    }
+
+
+    #content h3 {
+      margin-bottom: -10px;
+      cursor: pointer;
+    }
+
+    #content h3:hover {
+      color: #ffeb00;
+    }
+
+    #content>div>p {
+      cursor: pointer;
+    }
+
+    #content>div>p:nth-child(3) {
+      position: relative;
+      left: 30rem;
+      top: -3rem;
+
+
+    }
+
+    /* end styling */
+    #end {
+      color: #ffeb00;
+      margin: auto;
+      margin-top: 12%;
+      width: 800px;
+      display: none;
+
+    }
+
+    #end h1 {
+      text-align: center;
+    }
+
+
+    #end>div {
+      width: 40%;
+      margin: auto;
+      margin-left: 50px;
+      border: 1px solid #ffeb00;
+      margin-top: 80px;
+      text-align: center;
+
+    }
+
+    #end>#firstBox {
+      margin-left: 8%;
+    }
+
+    #end>#secondBox {
+      margin-left: 50%;
+      margin-top: -20.5%;
+    }
+
+    #goBack {
+      display: block;
+      margin: auto;
+      padding: 10px 30px;
+      margin-top: 30px;
+      border: 1px solid #ffeb00;
+      border-radius: 20px;
+      color: #ffeb00;
+      font-size: 20px;
+      background: transparent;
+
+    }
+
+    #end #firstBox:hover {
+      color: white;
+      border: 2px solid white;
+    }
+
+    #end #secondBox:hover {
+      color: white;
+      border: 2px solid white;
+    }
+
+    #goBack:hover {
+      color: white;
+      border: 2px solid white;
+    }
+
+    #video {
+      width: 100%;
+      /* height: 100%; */
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+  </style>
+
+</head>
+
+<body>
+  <video autoplay loop muted plays-inline id="video">
+    <source src="Hyperspace - 25689.mp4" type="video/mp4">
+  </video>
+  <div id="head">
+    <div id="logo">
+      <img src="index.png" alt="">
+    </div>
+    <div id="second">
+      <input type="text" id="Search" placeholder="   Search characters" oninput="debounce(main,100)" />
+
+      <button id="search-button">
+        <i class="fa fa-search" aria-hidden="true" style="font-size: 15px"></i>
+      </button>
+    </div>
+  </div>
+  <div id="content">
+
+  </div>
+
+  <div id="end">
+    <h1></h1>
+    <div id="firstBox">
+      <h3>Personal Info</h3>
+      <p id="birth_year">Birth Year: </p>
+      <p id="Gender">Gender: </p>
+      <p id="Height">Height: </p>
+    </div>
+    <div id="secondBox">
+      <h3>Anatomy</h3>
+      <p id="eye_color">Eye Color: </p>
+      <p id="mass">Mass: </p>
+      <p id="hair_color">Hair Color: </p>
+    </div>
+    <button id="goBack">Go Back</button>
+  </div>
+
+</body>
+
+</html>
+<script src="script.js"></script>
