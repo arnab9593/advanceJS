@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Mcdonalds</title>
+    <style>
+        #checkbox{
+            display: flex;
+        }
+        label {
+            position: relative;
+            left: 35rem;
+        }
+        #image{
+            margin: auto;
+            width: 450px;
+            height: 450px;
+            justify-content: center;
+            margin-top: 40px;
+           
+        }
+        #banner{
+            height: 220px;
+            width: 900px;
+            margin-left: 230px;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+        #time{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 30px;
+            margin-top: 20px;
+            color: rgb(247, 29, 29);
+        }
+        #orderId{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-size: 30px;
+            margin-top: 20px;
+            color: rgba(255, 234, 42, 0.767);
+        }
+        button {
+            background-color: rgb(248, 234, 42);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            left: 35rem;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="https://res.klook.com/image/upload/q_85/c_fill,w_750/q_80/blogen/2018/04/mcdonaldsaroundtheworldheader.jpg" id="banner" alt="">
+    <p id="time"></p>
+    <p id="orderId"></p>
+    <div id="box"> 
+            <label><input name="checkbox"type="checkbox" id="sandwich" value="sandwich" >Spicy Crispy Chicken Sandwich</label><br>
+            <label><input name="checkbox" type="checkbox" id="apple" value="apple">Baked Apple Pie</label><br>
+            <label><input name="checkbox" type="checkbox" id="egg" value="egg">Egg McMuffin</label><br>       
+            <label><input name="checkbox" type="checkbox" id="chicken" value="chicken">Grilled Chicken Sandwich</label><br>       
+            <label><input name="checkbox" type="checkbox" id="fish" value="fish">Filet-o-fish</label><br>       
+    </div>
+    <button id="button">Order food</button>
+    <div id="image"></div>
+    </div>
+   
+</body>
+</html>
+<script src="index.js"></script>
