@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Styles/index.css">
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins",sans-serif;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    
+}
+
+img,button{
+    cursor: pointer;
+}
+
+
+
+
+.flex-div{
+    display: flex;
+    align-items: center;
+}
+
+nav{
+    padding: 10px 2%;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    position:fixed;
+    top: 0;
+    z-index: 10;
+}
+
+
+
+.nav-left .menu-icon{
+    width: 22px;
+    margin-right: 28px;
+   
+}
+
+
+
+.nav-middle .LMS{
+    color: #090979;
+    font-size:50px;  
+}
+
+.nav-right button{
+    margin-left: 15px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: #ccc;
+    
+}
+#sign, #login {
+    background-color: teal;
+    padding: 10px 15px;
+color: white;
+}
+
+
+
+/* Navbar End */
+
+
+</style>
+</head>
+<body>
+    
+    <nav class="flex-div">
+        <div class="nav-left flex-div">
+            <!-- <img src="images/menu.png" class="menu-icon"> -->
+            <img src="https://www.masaischool.com/img/navbar/logo.svg" class="logo-icon">
+        </div>  
+        <div class="nav-middle" class="flex-div">
+          <h1 class="LMS">Masai LMS</h1> 
+        </div>
+        <div class="nav-right" class="flex-div">
+          <a href="signup.html"><button id="sign"> SignUp</button></a> 
+            <a href="login.html"><button id="login">Login</button></a>   
+        </div>
+    </nav>
+
+
+
+</body>
+</html>
