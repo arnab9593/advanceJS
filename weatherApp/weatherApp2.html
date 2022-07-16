@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEATHER I</title>
+    <style>
+      .mapouter {
+        position: relative;
+        text-align: right;
+        /* height: 500px; */
+        width: 600px;
+      }
+
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 500px;
+        width: 600px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+      #container {
+        width: 90%;
+        margin: auto;
+      }
+      #container > div > input[type="text"] {
+        margin-left: 17rem;
+        width: 40%;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+      #container > div > input[type="button"] {
+        padding: 15px;
+        border-radius: 10px;
+        background-color: gray;
+        color: white;
+      }
+      #displayWeather {
+        width: 50%;
+        margin-left: 17rem;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        text-align: center;
+      }
+      #displayWeather h2 {
+        font-size: 40px;
+        color: red;
+      }
+      #displayWeather p {
+        font-size: 25px;
+      }
+      #Display-map {
+        margin-left: 15rem;
+        width: 1000px;
+        margin-bottom: 20px;
+      }
+
+      #dayforecast {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: auto;
+      }
+      #dayforecast > div {
+        background-color: black;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+
+      #dayforecast > div > h2 {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+      }
+      #dayforecast > div > img {
+        width: 50%;
+        height: 30%;
+        margin-left: 2rem;
+      }
+      #dayforecast > div > p {
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body onload="getLocation()">;
+    <div id="container">
+      <h1>Have a look on Weather Forecast</h1>
+      <div>
+        <input
+          type="text"
+          name="city"
+          id="city"
+          placeholder="Enter Your City"
+          autocomplete="off"
+        />
+        <input type="button" name="get" id="get" value="Get Report" />
+      </div>
+      <div>
+        <div id="displayWeather"></div>
+
+        <div id="Display-map">
+          <div class="mapouter">
+            <div class="gmap_canvas">
+              <iframe
+                width="600"
+                height="500"
+                id="gmap_canvas"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="dayforecast">
+        <!-- <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div> -->
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.querySelector("#get").addEventListener("click", get);
+
+  function get() {
+    let city = document.querySelector("#city").value;
+
+    const url1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=689808c5ffc59970dd63eca871d32772`;
+
+    fetch(url1)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (res) {
+         console.log(res)
+        // console.log(res.wind.speed);
+        //append(res);
+        getCoordinates(res.coord.lon, res.coord.lat);
+      });
+  }
+
+  //Appending to the display weather section
+
+  function append(data) {
+    document.querySelector("#displayWeather").innerHTML = null;
+    let h2 = document.createElement("h2");
+    h2.innerText = data.name;
+    let temp = document.createElement("p");
+    temp.innerText = `Temp:- ${data.main.temp}`;
+    let minTemp = document.createElement("p");
+    minTemp.innerText = `Min Temp:- ${data.main.temp_min}`;
+    let maxTemp = document.createElement("p");
+    maxTemp.innerText = `Min Temp:- ${data.main.temp_max}`;
+    let windSpeed = document.createElement("p");
+    windSpeed.innerText = `Wind Speed:- ${data.wind.speed} km/hr`;
+    let windDeg = document.createElement("p");
+    windDeg.innerText = `Wind Degree:- ${data.wind.deg}`;
+    let windGust = document.createElement("p");
+    windGust.innerText = `Wind Speed:- ${data.wind.gust}`;
+    // Append to HTML
+    document.querySelector("#displayWeather").append(h2, temp, minTemp, maxTemp, windSpeed, windDeg, windGust);
+
+    let url = `https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    document.querySelector("iframe").src = url;
+  }
+
+  function getCoordinates(lon, lat) {
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=689808c5ffc59970dd63eca871d32772`;
+
+    fetch(url)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (res) {
+        console.log(res);
+        append2(res);
+      });
+  }
+  let q = 1;
+
+  let images = [
+    "https://www.wunderground.com/static/i/c/v4/38.svg",
+    "https://www.wunderground.com/static/i/c/v4/29.svg",
+    "https://www.wunderground.com/static/i/c/v4/30.svg",
+    "https://www.wunderground.com/static/i/c/v4/11.svg",
+  ];
+
+  function append2(data) {
+    document.querySelector("#dayforecast").innerHTML = null;
+    let dailyData = data.daily;
+    // console.log(dailyData)
+    // console.log(typeof dailyData.values())
+    dailyData.forEach(function (el) {
+      let card = document.createElement("div");
+      let h2 = document.createElement("h2");
+      h2.innerText = `Day ${q}`;
+      q++;
+
+      let maxTemp = document.createElement("p");
+      maxTemp.innerText = el.temp.max;
+      let minTemp = document.createElement("p");
+      minTemp.innerText = el.temp.min;
+
+      let img = document.createElement("img");
+      let x = Math.floor(Math.random() * 4);
+      img.src = images[x];
+      card.append(h2, img, maxTemp, minTemp);
+      document.querySelector("#dayforecast").append(card);
+    });
+  }
+
+// geolocation
+function getLocation() {
+    navigator.geolocation.getCurrentPosition(success);
+
+    function success(pos) {
+      const crd = pos.coords;
+
+      console.log("Your current position is:");
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+
+      getWeatherOnLocation(crd.latitude, crd.longitude);
+    }
+  }
+
+  function getWeatherOnLocation(lat, lon) {
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=689808c5ffc59970dd63eca871d32772`;
+
+    fetch(url)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (res) {
+        console.log(res);
+        append(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+
+
+</script>
