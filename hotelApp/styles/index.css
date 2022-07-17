@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#navbar{
+    background-color: black;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#Login-signup{
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+}
+#Login-signup>a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+h2{
+    color: #fff;
+}
+input{
+    padding: 10px;
+    width: 30%;
+    outline: none;
+    border-radius: 5px;
+}
+input:hover{
+    border-color: blue;
+}
+#form>button{
+    padding: 10px 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    cursor: pointer;
+}
+
+#sorting{
+    background-color: #48c9b0;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#sorting>button{
+    padding: 15px;
+    background-color: #ffbf09;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#hotels_list{
+    display: grid;;
+    width: 98%;
+    margin: auto;
+    margin-top: 50px;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+#hotels_list>div{
+    border: 1px solid black;
+    padding: 10px;
+    height: 390px;
+}
+#hotels_list>div>img{
+    width: 100%;
+}
+#hotels_list>div>h3{
+    color: black;
+    margin-top: 5px;
+}
+#hotels_list>div>p{
+    margin-top: 10px;
+}
+#hotels_list>div>button{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
