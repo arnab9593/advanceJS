@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        *{
+            text-decoration: none;
+        }
+        #loginForm {
+            border: 1px solid black;
+            width: 300px;
+            height: 190px;
+            margin-top: 20px;
+            margin: auto auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loginForm">
+        <h3>Login</h3>
+        <form>
+            <input type="email" placeholder="Enter Username" id="loginusername"><br><br>
+            <input type="password" placeholder="Enter Password" id="passwd"><br><br>
+        </form>
+        <button onclick="login()">Login</button>
+        <button><a href="signup.html">Signup</a></button>
+    </div>
+</body>
+
+</html>
+<script>
+    function login() {
+
+        let login_data = {
+
+            username: document.getElementById("loginusername").value,
+            password: document.getElementById("passwd").value,
+
+        }
+
+        let body1 = JSON.stringify(login_data);
+
+        let login_api_link = 'https://masai-api-mocker.herokuapp.com/auth/login';
+
+        fetch(login_api_link, {
+            method: "POST",
+
+            body: body1,
+
+            // mode: 'no-cors',
+
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                console.log(response);
+
+                getMyProfile(response, login_data)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        // console.log(login_data.username);
+
+    }
+
+    //code to check a particular type of user
+
+    function getMyProfile({ token }, { username }) {
+
+        // console.log(token, username);
+
+        fetch(`https://masai-api-mocker.herokuapp.com/user/${username}`, {
+
+            // mode: 'no-cors',
+
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                console.log(res.username);
+                if (res.username === 'linux' && res.token == 'e206a54e97690cce50cc872dd70ee896') {
+                    alert("Admin Login");
+                    window.location.href = "admin.html"
+                }
+                else {
+                    alert("User Login");
+                    window.location.href = "menu.html"
+                    sessionStorage.setItem("username", res.username)
+                }
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+
+    }
+
+
+
+</script>

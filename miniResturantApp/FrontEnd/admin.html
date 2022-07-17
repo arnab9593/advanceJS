@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        *{
+            text-decoration: none;
+        }
+        #add_item{
+            border: 1px solid black;
+            width: 200px;
+            height: 280px;
+            padding: 20px;
+            text-align: center;
+            margin: auto auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Hello Admin</h3>
+    <div id="add_item">
+        <h4>Add Item</h4>
+        <input type="text" placeholder="Image url" id="image"> <br><br>
+        <input type="text" placeholder="Title" id="title"> <br><br>
+        <input type="text" placeholder="Description" id="description"> <br><br>
+        <input type="number" placeholder="Price" id="price"> <br><br>
+        <input type="text" placeholder="Rating" id="rating"><br><br>
+        <button onclick="addItem()">Submit</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    class addProduct {
+        constructor(image, title, description, price, rating) {
+
+            this.Pimage = image;
+            this.Ptitle = title;
+            this.Pdescription = description;
+            this.Pprice = price;
+            this.Prating = rating;
+
+
+        }
+        adminAddItem(image, title, description, price, rating) {
+
+            this.Pimage = image;
+            this.Ptitle = title;
+            this.Pdescription = description;
+            this.Pprice = price;
+            this.Prating = rating;
+
+            fetch('http://127.0.0.1:3000/api/items', {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }
+    }
+
+    let data;
+    let addItem = () => {
+        let image = document.getElementById('image').value;
+        let title = document.getElementById('title').value;
+        let description = document.getElementById('description').value;
+        let price = +document.getElementById('price').value;
+        let rating = +document.getElementById('rating').value;
+
+        data = new addProduct(image, title, description, price, rating)
+        data.adminAddItem(image, title, description, price, rating)
+
+        //bellow is the way to create object using es6 method
+        // data = { image, title, description, price, rating }
+
+        console.log(data);
+
+
+    };
+
+</script>
