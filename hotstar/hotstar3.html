@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: teal;
+        }
+
+        #movies {
+            /* width: 80%; */
+            /* border: 1px solid blue; */
+            display: grid;
+            margin: auto;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+
+
+
+        }
+
+        .movie {
+            margin: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .movie p {
+            text-align: center;
+
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            width: 400px;
+            height: 350px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Top Trending Movies</h1>
+    <div id="movies"></div>
+</body>
+
+</html>
+<script>
+    async function getData() {
+        const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=5ca288bb4fb79080126dea0873f42905`;
+        let res = await fetch(url);
+        let data = await res.json();
+        // return data.Search;
+        append(data.results);
+        console.log(data.results);
+    }
+    getData();
+
+    function append(data) {
+        let container = document.getElementById("movies");
+        container.innerHTML = null;
+
+        data.forEach(function (el) {
+            let img = document.createElement("img");
+            img.src = "https://image.tmdb.org/t/p/w500" + el.poster_path;
+
+            let Title = document.createElement("p");
+            Title.innerText = `Title:- ${el.title}`;
+
+            let releaseDate = document.createElement("p");
+            releaseDate.innerText = `Release Date:- ${el.release_date}`;
+
+            let overView = document.createElement("p");
+            overView.innerText = `Over View:- ${el.overview}`;
+
+            let voteCount = document.createElement("p");
+            voteCount.innerText = `Vote Count:- ${el.vote_count}`;
+
+            let div = document.createElement("div");
+            div.setAttribute("class", "movie");
+            div.append(img, Title, releaseDate, voteCount, overView);
+
+            container.append(div);
+        });
+    }
+
+</script>

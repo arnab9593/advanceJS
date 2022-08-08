@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* nav css starts */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        nav {
+
+            padding: 10px 15px 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #131927;
+        }
+
+
+        #logo>img {
+            /* width: 100%; */
+            /* border: 1px solid white; */
+            height: 40px;
+        }
+
+        #tags {
+            margin-top: 10px;
+            margin-left: -55px;
+
+
+        }
+
+        #tags a {
+            color: white;
+            text-decoration: none;
+            padding: 20px 20px 0px 20px;
+            font-size: 20px;
+
+        }
+
+        #input {
+            display: flex;
+            align-items: center;
+            justify-content: right;
+
+            margin-right: -5rem;
+
+        }
+
+        #input svg {
+            width: 45px;
+            height: 45px;
+            margin-top: 1rem;
+            margin-left: -4rem;
+        }
+
+        #search {
+            width: 270px;
+            border-top-style: hidden;
+            border-right-style: hidden;
+            border-left-style: hidden;
+            border-bottom-style: groove;
+            background-color: #131927;
+            margin-top: 5px;
+            margin-left: 12rem;
+            /* margin-left: 15rem; */
+            color: white;
+        }
+
+        /* input:focus {
+        color: white;
+        outline: none;
+        
+      } */
+
+        #input input::placeholder {
+            color: white;
+
+
+        }
+
+        /* nav css ends */
+        input {
+            width: 500px;
+            height: 50px;
+
+
+        }
+
+        #subscribe {
+            margin-top: 8px;
+            margin-left: 5rem;
+            padding: 5px 10px;
+            font-size: 12px;
+            background-color: #2081e0;
+            color: white;
+            border-radius: 2px;
+            border: none;
+        }
+
+        #login {
+            margin-top: 8px;
+            margin-left: -6rem;
+            /* margin-right: 5rem; */
+            padding: 5px 10px;
+            font-size: 12px;
+            background: none;
+            color: white;
+            border-radius: 2px;
+            border: none;
+            font-size: 15px;
+        }
+
+
+        #query {
+            width: 200px;
+            height: 30px;
+            border: none;
+            background-color: #131927;
+            outline: none;
+            border-bottom: 1px solid rgb(190, 181, 181);
+            font-size: 1.2rem;
+            color: white;
+            position: relative;
+            left: 5rem;
+            padding: 0 10px;
+
+        }
+
+        #search-button {
+            margin-right: -5rem;
+            font-size: large;
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            color: white;
+        }
+
+        #closure {
+            width: 30%;
+            margin-left: 50rem;
+            color: white;
+            display: none;
+            background-color: #131927;
+        }
+
+        #movies {
+            height: 500px;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+        .movie {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .movie img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #tags #kids {
+            color: #ffaa06;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div id="logo">
+            <img src="https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg"
+                alt="" />
+
+        </div>
+        <div id="tags">
+            <a href="#" id>TV</a>
+            <a href="#">Movies</a>
+            <a href="#">Sports</a>
+            <a href="#">Disney+</a>
+            <a href="#" id="kids">KiDS</a>
+        </div>
+        <!-- <a href="#"><img src="" alt=""></a> -->
+
+
+
+        <div id="input">
+            <input type="text" id="query" placeholder="Search" oninput="debounce(main, 1000)" />
+
+            <button id="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+
+        </div>
+        <button id="subscribe">SUBSCRIBE</button>
+        <button id="login">LOGIN</button>
+    </nav>
+
+    <div id="closure">
+        <!-- <input
+      oninput="debounce(main, 1000)"
+      type="text"
+      id="query"
+      placeholder="Search"
+    /> -->
+        <div id="movies"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    async function main() {
+        let query = document.getElementById("query").value;
+        let data = await getData(query);
+        append(data);
+    }
+    async function getData(query) {
+        const url = `https://www.omdbapi.com/?apikey=835f4e9&s=${query}`;
+        let res = await fetch(url);
+        let data = await res.json();
+        return data.Search;
+    }
+
+
+
+    function append(data) {
+        document.getElementById('closure').style.display = "block"
+        let container = document.getElementById("movies");
+
+        container.innerHTML = null;
+
+        data.forEach(function (el) {
+            let img = document.createElement("img");
+            img.src = el.Poster;
+
+            let p = document.createElement("p");
+            p.innerText = el.Title;
+
+            let div = document.createElement("div");
+            div.setAttribute("class", "movie");
+            div.append(img, p);
+
+            container.append(div);
+        });
+    }
+    let id;
+
+    function debounce(func, delay) {
+        if (id) {
+            clearTimeout(id);
+        }
+        id = setTimeout(function () {
+            func();
+        }, delay);
+    }
+</script>

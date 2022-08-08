@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        input {
+            width: 500px;
+            height: 50px;
+
+        }
+
+        #movies {
+            width: 505px;
+            height: 500px;
+            background-color: rgb(216, 209, 209);
+            overflow: scroll;
+        }
+
+        .movie {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .movie img {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* hotsatr 2 */
+        #select_movie {
+            width: 700px;
+            height: 450px;
+            /* border: 1px solid red; */
+            margin-left: 34rem;
+            margin-top: -30rem;
+        }
+
+        #select_movie {
+            display: flex;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            display: none;
+        }
+
+        #select_movie img {
+            width: 300px;
+            height: 350px;
+            margin-top: 20px;
+        }
+
+        #select_movie p {
+            width: 350px;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        #select_movie>div:first-child {
+            width: 50%;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        #select_movie>div:last-child {
+            width: 50%;
+            margin-top: -20rem;
+            margin-left: 20rem;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input::placeholder {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Details Of Movies</h1>
+    <h2>Click on any single movie to appear single data of a movie</h2>
+    <input oninput="debounce(main, 1000)" type="text" id="query" placeholder="Search" />
+    <div id="movies"></div>
+
+    <div id="select_movie"></div>
+</body>
+
+</html>
+<script>
+    async function main() {
+        let query = document.getElementById("query").value;
+        let data = await getData(query);
+        append(data);
+    }
+    async function getData(query) {
+        const url = `https://www.omdbapi.com/?apikey=835f4e9&s=${query}`;
+        let res = await fetch(url);
+        let data = await res.json();
+        return data.Search;
+    }
+
+    function append(data) {
+        // if (!data) {
+        //   return;
+        // }
+        let container = document.getElementById("movies");
+        container.innerHTML = null;
+
+        data.forEach(function (el) {
+            let img = document.createElement("img");
+            img.src = el.Poster;
+
+            let p = document.createElement("p");
+            p.innerText = el.Title;
+
+            let div = document.createElement("div");
+            div.setAttribute("class", "movie");
+            div.append(img, p);
+
+            div.addEventListener("click", function () {
+                selectMovie(el.Title);
+            });
+
+            container.append(div);
+        });
+    }
+    let id;
+
+    function debounce(func, delay) {
+        if (id) {
+            clearTimeout(id);
+        }
+        id = setTimeout(function () {
+            func();
+        }, delay);
+    }
+
+    function selectMovie(name) {
+        document.getElementById("select_movie").style.display = "block";
+        document.querySelector("#select_movie").innerHTML = "";
+        async function getData(name) {
+            const url = `https://www.omdbapi.com/?apikey=835f4e9&t=${name}`;
+            let res = await fetch(url);
+            let data = await res.json();
+            append2(data);
+            console.log(data);
+        }
+        getData(name);
+
+        function append2(data) {
+            let img = document.createElement("img");
+            img.src = data.Poster;
+            let name = document.createElement("p");
+            name.innerText = `Name:- ${data.Title}`;
+
+            let Genre = document.createElement("p");
+            Genre.innerText = `Genre:- ${data.Genre}`;
+            let Actors = document.createElement("p");
+            Actors.innerText = `Actors:- ${data.Actors}`;
+            let imdbRating = document.createElement("p");
+            imdbRating.innerText = `ImdbRating:- ${data.imdbRating}`;
+            let Year = document.createElement("p");
+            Year.innerText = `Released date:- ${data.Released}`;
+
+            let div = document.createElement("div");
+            let div2 = document.createElement("div");
+            div2.append(name, Year, imdbRating, Genre, Actors);
+
+            div.append(img);
+            document.querySelector("#select_movie").append(div, div2);
+        }
+    }
+</script>
