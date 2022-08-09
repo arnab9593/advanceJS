@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS</title>
+</head>
+
+<body>
+    <h2>OOPS</h2>
+</body>
+
+</html>
+
+<script>
+    //inheritance example 
+    //multiple inheritance is not possible in oops
+
+    //multilevel inheritance:-
+    class Vehicle {
+        constructor(name, brand) {
+            this.name = name;
+            this.brand = brand;
+        }
+
+        details() {
+            console.log(this.name + " manufactured by " + this.brand);
+        }
+    }
+
+    class Car extends Vehicle {
+        constructor(name, brand) {
+            super(name, brand);
+        }
+    }
+
+    class Truck extends Car {
+        constructor(name, brand) {
+            super(name, brand);
+        }
+    }
+
+    let newTruck = new Vehicle("407", "Tata")
+
+    let newcar = new Car("R8", "Audi");
+    // newTruck.details()
+
+
+    //encapsulation:-
+    class Studets {
+
+        #score
+        constructor(name, course, score) {
+            this.name = name;
+            this.course = course;
+            this.#score = score;
+
+        }
+        //only getter will allow the user to read the score not modify, if we use setter modify user can modify the code
+        get studentScore() {
+            return this.#score;
+        }
+        // set studentScore(newScore) {
+        //     this.#score = newScore;
+        // }
+
+        studentDetails() {
+            console.log(this.name + " scored " + this.studentScore + " in " + this.course);
+        }
+    }
+
+    let stu1 = new Studets("Arnab", "JS211", "9");
+    // stu1.studentDetails()
+
+
+    //Absctractoin (hiding complexity):
+    //it is the way of hiding the implementation details and showing only the functionality details to the user
+    class User {
+        constructor(name, email) {
+            this._name = name;
+            this._email = email;
+        }
+
+        getSkilled(skill) {
+            // console.log(`${this._name} is learing ${skill}`);
+        }
+    }
+
+    let user1 = new User("Arnab", "arnab@mail.com")
+    user1.getSkilled("JS");
+    // console.log(user1);
+
+    //polymorphism (smae method will work in multiple class and manipulation allowed for that method)
+    class Computer {
+        constructor(name) {
+            this.name = name;
+        }
+
+        performance() {
+            console.log(`This ${this.name} computer is an ultimate beast`);
+        }
+    }
+
+    class Server extends Computer {
+        constructor(name) {
+            super(name)
+            this.name = name;
+        }
+
+        performance() {
+            console.log(`This ${this.name} server is an ultimate beast`);
+        }
+    }
+
+
+    let cm1 = new Server("Dell");
+    cm1.performance();
+</script>
