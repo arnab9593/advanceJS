@@ -2,9 +2,6 @@
 //https://www.themealdb.com/api/json/v1/1/search.php?s=chicken
 
 
-
-
-
 //import code start
 import { navBar } from "../components/navbar.js";
 document.getElementById("navbar").innerHTML = navBar();
@@ -35,7 +32,9 @@ let append = (data) => {
 
         let btn = document.createElement("button");
         btn.innerText = "Add to bucket"
-        btn.addEventListener="click"
+        btn.addEventListener("click", function () {
+            addTobag(ele);
+        });
 
         let card = document.createElement("div");
         card.append(image, name, btn);
@@ -44,6 +43,19 @@ let append = (data) => {
 
 }
 
+
+let totalFood = JSON.parse(localStorage.getItem("myFood")) || []
+    
+function addTobag(ele) {
+    if (Array.isArray(totalFood)) {
+        totalFood.push(ele);
+    }
+    // 
+    // console.log(totalFood);
+    localStorage.setItem("myFood", JSON.stringify(totalFood));
+    window.location.href = "bucket.html"
+    console.log(totalFood);
+}
 
 
 // strMealThumb: strMeal

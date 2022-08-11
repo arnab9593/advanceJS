@@ -40,7 +40,7 @@ async function login(event) {
     let data = await res.json();
     alert("User Login");
     window.location.href = "index.html"
-    sessionStorage.setItem("username", login_data.username)
+    sessionStorage.setItem("username", login_data.username, true)
     console.log(login_data.username);
     console.log(data);
 }
