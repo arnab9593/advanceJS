@@ -1,0 +1,28 @@
+#navbar {
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid black;
+}
+
+#showUserName {
+    margin-left: 500px;
+    color: teal;
+    font-size: 30px;
+}
+
+#showFoods {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+#showFoods div {
+    border: 1px solid black;
+
+}
+
+#showFoods img {
+    height: 150px;
+    width: 150px;
+}
