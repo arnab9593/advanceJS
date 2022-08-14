@@ -50,7 +50,7 @@
     document.getElementById("showUserName").innerText = `Welcome ${displayUserName}`;
 
     let getData = async () => {
-        let res = await fetch('http://127.0.0.1:3000/api/items/?_limit=6');
+        let res = await fetch('http://127.0.0.1:3300/api/items/?_limit=6');
 
         let data = await res.json();
         console.log(data);
@@ -87,14 +87,14 @@
     //sorting
 
     let sortpLH = async () => {
-        let res = await fetch('http://127.0.0.1:3000/api/items/?_sort=Pprice&_order=asc');
+        let res = await fetch('http://127.0.0.1:3300/api/items/?_sort=Pprice&_order=asc');
         let data = await res.json();
         console.log(data);
         append(data)
 
     }
     let sortrHL = async () => {
-        let res = await fetch('http://127.0.0.1:3000/api/items/?_sort=Prating&_order=desc');
+        let res = await fetch('http://127.0.0.1:3300/api/items/?_sort=Prating&_order=desc');
         let data = await res.json();
         console.log(data);
         append(data)
@@ -105,11 +105,12 @@
     let nextPage = async () => {
         pageNo++;
         // item = item + 5;
-        let res = await fetch(`http://127.0.0.1:3000/api/items/?_page=${pageNo}&_limit=6`);
+        let res = await fetch(`http://127.0.0.1:3300/api/items/?_page=${pageNo}&_limit=6`);
         let data = await res.json();
         console.log(data);
         let length = data.length;
         if (length == 0) {
+            pageNo--;
             alert("No item")
         }
         else {
@@ -123,7 +124,7 @@
 
     let prevPage = async () => {
         pageNo--;
-        let res = await fetch(`http://127.0.0.1:3000/api/items/?_page=${pageNo}&_limit=6`);
+        let res = await fetch(`http://127.0.0.1:3300/api/items/?_page=${pageNo}&_limit=6`);
         let data = await res.json();
         console.log(data);
         let length = data.length;
