@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #userName {
+            color: teal;
+        }
+
+        #userForm {
+            border: 1px solid black;
+            width: 250px;
+            text-align: center;
+        }
+
+        #updatedUserForm {
+            margin-top: -145px;
+            margin-left: 300px;
+            display: none;
+            border: 1px solid black;
+            width: 250px;
+            text-align: center;
+        }
+
+        #changes {
+            border: 1px solid black;
+            width: 610px;
+            margin: auto auto;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="userForm">
+        <form action="" id="subData">
+            <input type="text" placeholder="Name" id="name" required> <br>
+            <input type="text" placeholder="Batch" id="batch" required> <br>
+            <select name="" id="selCourse" required>
+                <option>Select Course</option>
+                <option value="Full Stack Web Development">Full Stack Web Development</option>
+                <option value="Android Development">Android Developmet</option>
+                <option value="Data Analytics">Data Analytics</option>
+                <option value="Machine Learning">Machine Learning</option>
+            </select> <br>
+            <input type="number" placeholder="Age" id="age" required> <br>
+            <input type="number" placeholder="Mobile" id="mob" required> <br>
+            <input type="number" placeholder="Score" id="score" required> <br>
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="updatedUserForm">
+        <form action="" id="sub_up_Data">
+            <input type="text" placeholder="Name" id="up_name" required> <br>
+            <input type="text" placeholder="Batch" id="up_batch" required> <br>
+            <select name="" id="up_selCourse" required>
+                <option>Select Course</option>
+                <option value="Full Stack Web Development">Full Stack Web Development</option>
+                <option value="Android Development">Android Developmet</option>
+                <option value="Data Analytics">Data Analytics</option>
+                <option value="Machine Learning">Machine Learning</option>
+            </select> <br>
+            <input type="number" placeholder="Age" id="up_age" required> <br>
+            <input type="number" placeholder="Mobile" id="up_mob" required> <br>
+            <input type="number" placeholder="Score" id="up_score" required> <br>
+            <button id="up_submit">Submit</button>
+        </form>
+    </div>
+    <div id="changes">
+        <button onclick="sortLH()">Age low to high</button>
+        <button onclick="sortHL()">Age high to low</button>
+        <button onclick="nextPage()">Next Page</button>
+        <button onclick="prevPage()">Previous Page</button>
+        <select name="" id="select_Course" onchange="showCourse()">
+            <option>Select Course</option>
+            <option value="Full Stack Web Development">Full Stack Web Development</option>
+            <option value="Android Development">Android Developmet</option>
+            <option value="Data Analytics">Data Analytics</option>
+            <option value="Machine Learning">Machine Learning</option>
+        </select>
+    </div>
+    <div id="container">
+
+    </div>
+
+</body>
+
+</html>
+
+<script src="main.js"></script>

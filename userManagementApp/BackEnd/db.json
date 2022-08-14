@@ -1,0 +1,184 @@
+{
+  "users": [
+    {
+      "name": "Lucy D",
+      "batch": "ftweb18",
+      "course": "Android Development",
+      "age": "25",
+      "mobile": "23421345",
+      "evScore": "8",
+      "id": 1660484447438
+    },
+    {
+      "name": "Edwin",
+      "batch": "ftweb14",
+      "course": "Data Analytics",
+      "age": "21",
+      "mobile": "313441341",
+      "evScore": "5",
+      "id": 1660484476387
+    },
+    {
+      "name": "Kattey P",
+      "batch": "ftweb18",
+      "course": "Data Analytics",
+      "age": "21",
+      "mobile": "32323123213",
+      "evScore": "4",
+      "id": 1660488765937
+    },
+    {
+      "name": "Amber O",
+      "batch": "ftweb16",
+      "course": "Machine Learning",
+      "age": "29",
+      "mobile": "876877",
+      "evScore": "7",
+      "id": 1660490179014
+    },
+    {
+      "name": "Bruno M",
+      "batch": "ftweb16",
+      "course": "Machine Learning",
+      "age": "27",
+      "mobile": "87767567",
+      "evScore": "5",
+      "id": 1660490210837
+    },
+    {
+      "name": "Benjamin C",
+      "batch": "ftweb15",
+      "course": "Machine Learning",
+      "age": "22",
+      "mobile": "82798798",
+      "evScore": "6",
+      "id": 1660490247263
+    },
+    {
+      "name": "Rayan N",
+      "batch": "ftweb15",
+      "course": "Full Stack Web Development",
+      "age": "23",
+      "mobile": "47387294",
+      "evScore": "8",
+      "id": 1660490273642
+    },
+    {
+      "name": "Justine C",
+      "batch": "ftweb13",
+      "course": "Android Development",
+      "age": "22",
+      "mobile": "23232323",
+      "evScore": "4",
+      "id": 1660490300372
+    },
+    {
+      "name": "Joseph T",
+      "batch": "ftweb17",
+      "course": "Full Stack Web Development",
+      "age": "20",
+      "mobile": "6567578",
+      "evScore": "9",
+      "id": 1660490360272
+    },
+    {
+      "name": "Kate",
+      "batch": "ftweb13",
+      "course": "Full Stack Web Development",
+      "age": "22",
+      "mobile": "889798797",
+      "evScore": "4",
+      "id": 1660490387291
+    },
+    {
+      "name": "Abthony S",
+      "batch": "ftweb15",
+      "course": "Android Development",
+      "age": "28",
+      "mobile": "73649736",
+      "evScore": "7",
+      "id": 1660490410782
+    },
+    {
+      "name": "Lisa P",
+      "batch": "ftweb19",
+      "course": "Data Analytics",
+      "age": "25",
+      "mobile": "9767692490",
+      "evScore": "8",
+      "id": 1660490437869
+    },
+    {
+      "name": "Morgan F",
+      "batch": "ftweb18",
+      "course": "Machine Learning",
+      "age": "22",
+      "mobile": "34342215",
+      "evScore": "3",
+      "id": 1660490466240
+    },
+    {
+      "name": "Maddy N",
+      "batch": "ftweb18",
+      "course": "Android Development",
+      "age": "27",
+      "mobile": "57657586586",
+      "evScore": "6",
+      "id": 1660490503383
+    },
+    {
+      "name": "Harry P",
+      "batch": "ftweb13",
+      "course": "Full Stack Web Development",
+      "age": "21",
+      "mobile": "8758664687",
+      "evScore": "5",
+      "id": 1660490536728
+    },
+    {
+      "name": "Cristin M",
+      "batch": "ftweb15",
+      "course": "Data Analytics",
+      "age": "28",
+      "mobile": "878565",
+      "evScore": "8",
+      "id": 1660490580371
+    },
+    {
+      "name": "Arnab P",
+      "batch": "ftweb19",
+      "course": "Full Stack Web Development",
+      "age": "24",
+      "mobile": "2332332323",
+      "evScore": "9",
+      "id": 1660490602992
+    },
+    {
+      "name": "Richard S",
+      "batch": "ftweb14",
+      "course": "Full Stack Web Development",
+      "age": "21",
+      "mobile": "3974298740",
+      "evScore": "4",
+      "id": 1660490687911
+    },
+    {
+      "name": "Emma",
+      "batch": "ftweb14",
+      "course": "Machine Learning",
+      "age": "21",
+      "mobile": "4234355",
+      "evScore": "7",
+      "id": 1660490712923
+    },
+    {
+      "name": "Parker ",
+      "batch": "ftweb16",
+      "course": "Android Development",
+      "age": "24",
+      "mobile": "435143546",
+      "evScore": "6",
+      "id": 1660490754596
+    }
+  ]
+}
