@@ -1,0 +1,18 @@
+{
+  "name": "testurl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "url.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "babel-jest": "^28.1.3",
+    "jest": "^28.1.3"
+  }
+}
