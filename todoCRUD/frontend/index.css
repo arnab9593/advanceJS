@@ -1,0 +1,33 @@
+#container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+    margin-top: 20px;
+    
+}
+#container p {
+    font-size: 20px;
+}
+#container h3{
+    font-size: 30px;
+}
+#container div{
+    padding: 20px;
+}
+#todo{
+    width: 400px;
+    height: 40px;
+    /* margin-left: 35% */
+}
+#inputField{
+    border: 1px solid black;
+    width: 500px;
+    text-align: center;
+    margin: auto auto;
+    padding: 20px;
+}
+#inputField button{
+    margin-top: 20px;
+    
+}
