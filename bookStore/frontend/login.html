@@ -6,10 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        #loginForm {
+            border: 1px solid black;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            margin: auto auto;
+        }
+
+        #nav {
+            border: 1px solid black;
+            height: 40px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
+    <div id="nav">
+        <button id="home">Home</button>
+        <button id="login_nav">Login</button>
+        <button id="signup">Signup</button>
+        <button id="cart">Cart</button>
+        <button id="logout">Logout</button>
+    </div>
+    <div id="loginForm">
         <input type="text" placeholder="Enter username" id="username"> <br><br>
         <input type="password" placeholder="Enter Password" id="password"> <br><br>
         <button id="login">Login</button>
@@ -20,7 +42,36 @@
 
 <script>
 
+    let home = () => {
+        window.location = "showbooks.html";
+    }
+    document.getElementById("home").addEventListener("click", home)
+
+    let myFunction = () => {
+        window.location = "signup.html"
+    }
+    document.getElementById("signup").addEventListener("click", myFunction);
+
+    // let login = () => {
+    //     window.location = "login.html"
+    // }
+
+    // document.getElementById("login").addEventListener("click", login);
+
+    let cartFunction = () => {
+        window.location = "cart.html"
+    }
+    document.getElementById("cart").addEventListener("click", cartFunction);
+
+    let logoutFunction = () => {
+        sessionStorage.clear()
+        location.reload()
+    }
+    document.getElementById("logout").addEventListener("click", logoutFunction);
+
     let loginFunction = () => {
+
+        console.log("hello");
 
         let login_data = {
 
@@ -84,10 +135,11 @@
                     alert("Admin Login");
                     sessionStorage.setItem("adminstatus", true)
                     window.location.href = "index.html"
-                    
+
                 }
                 else {
                     alert("User Login");
+                    sessionStorage.setItem("normalUser", true)
                     window.location.href = "showbooks.html"
                     // sessionStorage.setItem("username", res.username)
                 }

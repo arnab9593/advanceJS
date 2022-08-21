@@ -5,6 +5,11 @@ let removebtn;
 let updatebtn;
 let addtocart;
 
+let home = () => {
+    window.location = "showbooks.html";
+}
+document.getElementById("home").addEventListener("click", home)
+
 let myFunction = () => {
     window.location = "signup.html"
 }
@@ -21,6 +26,11 @@ let cartFunction = () => {
 }
 document.getElementById("cart").addEventListener("click", cartFunction);
 
+let logoutFunction = () => {
+    sessionStorage.clear()
+    location.reload()
+}
+document.getElementById("logout").addEventListener("click", logoutFunction);
 
 let checkAdmin = sessionStorage.getItem("adminstatus")
 console.log(checkAdmin);
@@ -39,7 +49,7 @@ let displayData = (data) => {
     let container = document.getElementById("container");
     container.innerHTML = null;
 
-    data.forEach(({ image, name, author, price, id }) => {
+    data.forEach(({ image, name, author, price, id, status }) => {
 
         let card = document.createElement("div");
         let photo = document.createElement("img");
@@ -130,16 +140,26 @@ let updateBookdetails = (id) => {
 }
 
 
-let booksArray = JSON.parse(localStorage.getItem("books")) || [];
+// let booksArray = JSON.parse(localStorage.getItem("books")) || [];
 
 let addtoCartFunction = async (id) => {
 
     let res = await fetch(`https://tranquil-reef-65368.herokuapp.com/api/books/${id}`);
     let data = await res.json();
-    console.log(data);
-    // booksArray.push(data);
-    // booksArray.save()
-    localStorage.setItem("books", JSON.stringify(data));
+    if (data.status == false) {
+        data.status = true
+    }
+    let response = await fetch(`https://tranquil-reef-65368.herokuapp.com/api/books/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    let newdata = await response.json()
+    // console.log(data);
+    getData();
+    console.log(newdata);
 }
 
 

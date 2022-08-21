@@ -6,10 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
+    <style>
+        #nav {
+            border: 1px solid black;
+            height: 40px;
+            text-align: center;
+        }
+
+        #signupForm {
+            border: 1px solid black;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+            margin: auto auto;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
+    <div id="nav">
+        <button id="home">Home</button>
+        <button id="login">Login</button>
+        <button id="signup">Signup</button>
+        <button id="cart">Cart</button>
+        <button id="logout">Logout</button>
+    </div>
+    <div id="signupForm">
         <input type="text" placeholder="Enter Name" id="name"> <br><br>
         <input type="email" placeholder="Enter Email" id="mail"> <br><br>
         <input type="password" placeholder="Enter Password" id="password"> <br><br>
@@ -22,6 +44,34 @@
 
 </html>
 <script>
+
+    let home = () => {
+        window.location = "showbooks.html";
+    }
+    document.getElementById("home").addEventListener("click", home)
+
+
+    let myFunction = () => {
+        window.location = "signup.html"
+    }
+    document.getElementById("signup").addEventListener("click", myFunction);
+
+    let loginFunction = () => {
+        window.location = "login.html"
+    }
+
+    document.getElementById("login").addEventListener("click", loginFunction);
+
+    let cartFunction = () => {
+        window.location = "cart.html"
+    }
+    document.getElementById("cart").addEventListener("click", cartFunction);
+
+    let logoutFunction = () => {
+        sessionStorage.clear()
+        location.reload()
+    }
+    document.getElementById("logout").addEventListener("click", logoutFunction);
 
     let signupFunction = () => {
         let signup_data = {

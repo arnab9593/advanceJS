@@ -9,17 +9,32 @@
     <style>
         #nav {
             border: 1px solid black;
-            height: 40px;
+            height: 70px;
             text-align: center;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        #container div img {
+            height: 200px;
+            width: 150px;
         }
     </style>
 </head>
 
 <body>
     <div id="nav">
+        <button id="home">Home</button>
         <button id="login">Login</button>
         <button id="signup">Signup</button>
         <button id="cart">Cart</button>
+        <button id="logout">Logout</button>
+        <p id="cartTotalAmount"></p>
     </div>
     <div id="container">
 
