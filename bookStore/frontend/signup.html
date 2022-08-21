@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" placeholder="Enter Name" id="name"> <br><br>
+        <input type="email" placeholder="Enter Email" id="mail"> <br><br>
+        <input type="password" placeholder="Enter Password" id="password"> <br><br>
+        <input type="text" placeholder="Enter Username" id="username"> <br><br>
+        <input type="number" placeholder="Enter Mobilenumber" id="mobile"><br><br>
+        <input type="text" placeholder="Enter Description" id="description"><br><br>
+        <button id="signup">Signup</button>
+    </div>
+</body>
+
+</html>
+<script>
+
+    let signupFunction = () => {
+        let signup_data = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("mail").value,
+            password: document.getElementById("password").value,
+            username: document.getElementById("username").value,
+            mobile: document.getElementById("mobile").value,
+            description: document.getElementById("description").value,
+        };
+
+        signup_data = JSON.stringify(signup_data)
+
+        let signup_api_link = 'https://masai-api-mocker.herokuapp.com/auth/register';
+
+        fetch(signup_api_link, {
+            method: "POST",
+            body: signup_data,
+
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+        console.log(signup_data);
+
+
+    }
+
+    document.getElementById("signup").addEventListener("click", signupFunction)
+
+</script>
