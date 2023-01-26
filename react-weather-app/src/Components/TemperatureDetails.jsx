@@ -16,7 +16,7 @@ function TemperatureDetails() {
                 <p>Cloudy</p>
             </div>
             <div className='flex flex-row items-center justify-between text-white py-3'>
-                <UilSun className='w-150' ></UilSun>
+                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" />
                 <p className='text-5xl'>34°</p>
                 <div className='flex flex-col space-y-2'>
 
