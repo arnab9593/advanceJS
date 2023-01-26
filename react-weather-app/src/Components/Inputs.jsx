@@ -7,8 +7,10 @@ function Inputs({ setQuery, units, setUnits }) {
 
   const handleClick = () => {
     if (city !== '') {
+      console.log(city);
       setQuery({ q: city })
     }
+
   }
 
   const handleLocation = () => {
@@ -21,6 +23,13 @@ function Inputs({ setQuery, units, setUnits }) {
     }
   }
 
+  const handleUnits = (e) => {
+    const selectUnit = e.currentTarget.name;
+    if (units !== selectUnit) {
+      setUnits(selectUnit);
+    }
+  }
+
   return (
     <div className='flex flex-row justify-center my-6' >
       <div className='flex flex-row w-3/4 items-center justify-center space-x-4'>
@@ -30,9 +39,14 @@ function Inputs({ setQuery, units, setUnits }) {
           type="text"
           className="text-xl font-light p-2 w-full shadow-xl focus:outline-none capitalize"
           placeholder='Search'
+
+        />
+        <UilSearch
+          size={25}
+          className="text-white cursor-pointer transition ease-out hover:scale-125"
           onClick={handleClick}
         />
-        <UilSearch size={25} className="text-white cursor-pointer transition ease-out hover:scale-125"></UilSearch>
+
         <UilLocationPoint
           size={25}
           className="text-white cursor-pointer transition ease-out hover:scale-125"
@@ -41,9 +55,21 @@ function Inputs({ setQuery, units, setUnits }) {
       </div>
 
       <div className='flex flex-row w-1/4 items-center justify-center' >
-        <button name='metric' className='text-xl text-white cursor-pointer transition ease-out hover:scale-125 font-light'>°C</button>
+        <button
+          name='metric'
+          className='text-xl text-white cursor-pointer transition ease-out hover:scale-125 font-light'
+          onClick={handleUnits}
+        >
+          °C
+        </button>
         <p className='text-xl text-white mx-1'>|</p>
-        <button name='imperial' className='text-xl text-white cursor-pointer transition ease-out hover:scale-125 font-light'>°F</button>
+        <button
+          name='imperial'
+          className='text-xl text-white cursor-pointer transition ease-out hover:scale-125 font-light'
+          onClick={handleUnits}
+        >
+          °F
+        </button>
       </div>
 
     </div>
