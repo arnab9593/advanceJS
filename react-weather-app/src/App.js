@@ -2,6 +2,7 @@ import TopButtons from "./Components/TopButtons";
 import Inputs from "./Components/Inputs";
 import TimeAndLocation from "./Components/TimeAndLocation";
 import TemperatureDetails from "./Components/TemperatureDetails";
+import Forecast from "./Components/Forecast";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Inputs />
         <TimeAndLocation />
         <TemperatureDetails />
+        <Forecast />
       </div>
 
     </>
