@@ -1,10 +1,14 @@
-import TopButtons from "./Components/TopButtons";
-import Inputs from "./Components/Inputs";
+// import TopButtons from "./Components/TopButtons";
+// import Inputs from "./Components/Inputs";
 import TimeAndLocation from "./Components/TimeAndLocation";
 import TemperatureDetails from "./Components/TemperatureDetails";
 import Forecast from "./Components/Forecast";
 import getFormatedData from "./Services/weatherApi";
 import { useEffect, useState } from "react";
+import { Suspense, lazy } from "react";
+
+const Inputs = lazy(() => import("./Components/Inputs"));
+const TopButtons = lazy(() => import("./Components/TopButtons"));
 
 function App() {
 
@@ -37,8 +41,13 @@ function App() {
       <div
         className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br  h-fit shadow-xl shadow-gray-400 ${formatBackground()}`}
       >
-        <TopButtons setQuery={setQuery} />
-        <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+        <Suspense fallback={<div>Loading Buttons...</div>}>
+          <TopButtons setQuery={setQuery} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading Input...</div>}>
+          <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+        </Suspense>
 
         {weather && (
           <div>
